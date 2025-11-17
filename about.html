@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about GearSphere - Your trusted partner for premium mobile accessories since 2020.">
+    <title>About Us - GearSphere</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-header {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            margin-top: 70px;
+            text-align: center;
+        }
+        
+        .about-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .about-header p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .about-story {
+            padding: 5rem 0;
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .story-image {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .story-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .story-text p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .mission-section {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .mission-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .mission-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+        
+        .mission-icon i {
+            font-size: 3rem;
+            color: var(--white);
+        }
+        
+        .mission-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .mission-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        .values-section {
+            padding: 5rem 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: var(--radius-lg);
+        }
+        
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .value-icon i {
+            font-size: 1.75rem;
+            color: var(--white);
+        }
+        
+        .value-content h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+        
+        .value-content p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        .stats-section {
+            padding: 5rem 0;
+            background: var(--gradient-dark);
+            text-align: center;
+        }
+        
+        .stats-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 3rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            font-size: 1.125rem;
+            color: var(--gray-light);
+        }
+        
+        .team-section {
+            padding: 5rem 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .member-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-member h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .team-member .role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .team-member p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 1024px) {
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-header h1 {
+                font-size: 2rem;
+            }
+            
+            .story-text h2 {
+                font-size: 1.75rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-cog"></i>
+                    GearSphere
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i> 
+                            <span class="cart-count">0</span>
+                            <div class="cart-dropdown">
+                                <div class="cart-dropdown-header">
+                                    Shopping Cart
+                                </div>
+                                <div class="cart-items" id="cartItems">
+                                    <div class="cart-empty">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <p>Your cart is empty</p>
+                                    </div>
+                                </div>
+                                <div class="cart-dropdown-footer" id="cartFooter" style="display: none;">
+                                    <div class="cart-total">
+                                        <span>Total:</span>
+                                        <span class="cart-total-price" id="cartTotal">$0.00</span>
+                                    </div>
+                                    <div class="cart-actions">
+                                        <button class="btn-view-cart" onclick="window.location.href='cart.html'">View Cart</button>
+                                        <button class="btn-checkout" onclick="window.location.href='checkout.html'">Checkout</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Header -->
+    <section class="about-header">
+        <div class="container">
+            <h1>About GearSphere</h1>
+            <p>We're on a mission to protect your devices with premium accessories that combine style, quality, and innovation.</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="about-story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=800&q=80" alt="GearSphere Story">
+                </div>
+                <div class="story-text">
+                    <h2>Our Story</h2>
+                    <p>
+                        Founded in 2020, GearSphere started with a simple belief: everyone deserves high-quality mobile accessories without breaking the bank. What began as a small team of tech enthusiasts has grown into a trusted brand serving over 50,000 happy customers worldwide.
+                    </p>
+                    <p>
+                        We were frustrated with cheap, poorly-made accessories that failed when you needed them most. So we set out to change the game. Every product we offer is rigorously tested, carefully selected, and backed by our quality guarantee.
+                    </p>
+                    <p>
+                        Today, GearSphere stands for innovation, reliability, and customer-first service. We're not just selling accessories—we're protecting what matters to you, one device at a time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Mission & Vision</h2>
+                <p>What drives us every day</p>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To provide premium mobile accessories that protect, enhance, and personalize your devices while exceeding customer expectations through quality and service.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To become the world's most trusted mobile accessories brand, known for innovation, sustainability, and putting customers first in everything we do.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Our Promise</h3>
+                    <p>Every product comes with our quality guarantee. If you're not 100% satisfied, we'll make it right—no questions asked. Your trust is our priority.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="value-content">
+                        <h4>Quality First</h4>
+                        <p>We never compromise on quality. Every product is tested to ensure it meets our rigorous standards before reaching your hands.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="value-content">
+                        <h4>Customer Obsessed</h4>
+                        <p>Your satisfaction is our success. We listen, adapt, and go above and beyond to ensure you love every purchase.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="value-content">
+                        <h4>Innovation Driven</h4>
+                        <p>We constantly seek out the latest technologies and designs to bring you cutting-edge accessories that stand out.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="value-content">
+                        <h4>Sustainability Matters</h4>
+                        <p>We're committed to eco-friendly practices, from recyclable packaging to sustainable materials in our products.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="value-content">
+                        <h4>Transparency & Trust</h4>
+                        <p>We believe in honest communication, fair pricing, and building long-term relationships based on trust.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="value-content">
+                        <h4>Fast & Reliable</h4>
+                        <p>From lightning-fast shipping to responsive support, we value your time and deliver when it counts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <h2>GearSphere By The Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>50K+</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Premium Products</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.9/5</h3>
+                    <p>Average Rating</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Customer Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Team</h2>
+                <p>The passionate people behind GearSphere</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://i.pravatar.cc/400?img=12" alt="Alex Martinez">
+                    </div>
+                    <h4>Alex Martinez</h4>
+                    <p class="role">Founder & CEO</p>
+                    <p>Tech enthusiast with 10+ years in e-commerce. Alex's vision drives GearSphere's commitment to quality and innovation.</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://i.pravatar.cc/400?img=5" alt="Sarah Johnson">
+                    </div>
+                    <h4>Sarah Johnson</h4>
+                    <p class="role">Head of Customer Experience</p>
+                    <p>Passionate about creating exceptional customer journeys. Sarah ensures every interaction exceeds expectations.</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://i.pravatar.cc/400?img=15" alt="Michael Chen">
+                    </div>
+                    <h4>Michael Chen</h4>
+                    <p class="role">Product Director</p>
+                    <p>Design perfectionist who handpicks every product. Michael's eye for quality ensures only the best makes the cut.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Join the GearSphere Family</h2>
+                <p>Experience the difference of premium quality and exceptional service</p>
+                <a href="shop.html" class="btn btn-primary btn-lg">Start Shopping <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3><i class="fas fa-cog"></i> GearSphere</h3>
+                    <p>Your trusted source for premium mobile accessories. Quality guaranteed, customer satisfaction first.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Get exclusive deals and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-amex"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GearSphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

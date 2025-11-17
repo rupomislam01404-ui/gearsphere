@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your shopping cart - GearSphere mobile accessories">
+    <title>Shopping Cart - GearSphere</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cart-page {
+            padding: 8rem 0 4rem;
+            margin-top: 70px;
+            min-height: 60vh;
+        }
+        
+        .cart-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+        
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        
+        .cart-items-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .cart-table {
+            width: 100%;
+        }
+        
+        .cart-table-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 80px;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .full-cart-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 80px;
+            gap: 1rem;
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid var(--light);
+            align-items: center;
+        }
+        
+        .full-cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cart-product-info {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .cart-product-image {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .cart-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-product-details h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .cart-product-meta {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        .cart-quantity-control {
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--gray-light);
+            border-radius: var(--radius-md);
+            width: fit-content;
+        }
+        
+        .qty-btn {
+            padding: 0.5rem 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+        
+        .qty-btn:hover {
+            background: var(--light);
+        }
+        
+        .qty-value {
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .cart-item-price {
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .cart-item-total {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.125rem;
+        }
+        
+        .remove-item-btn {
+            background: none;
+            border: none;
+            color: var(--danger);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0.5rem;
+        }
+        
+        .remove-item-btn:hover {
+            color: var(--dark);
+        }
+        
+        .cart-summary {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .cart-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .summary-row:last-of-type {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 1.5rem 0;
+        }
+        
+        .summary-total .price {
+            color: var(--primary);
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1rem;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .continue-shopping {
+            width: 100%;
+            padding: 1rem;
+            background: var(--white);
+            color: var(--dark);
+            border: 2px solid var(--gray-light);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .continue-shopping:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .empty-cart i {
+            font-size: 5rem;
+            color: var(--gray-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .empty-cart h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .empty-cart p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-summary {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cart-table-header {
+                display: none;
+            }
+            
+            .full-cart-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .cart-product-info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-cog"></i>
+                    GearSphere
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i> 
+                            <span class="cart-count">0</span>
+                            <div class="cart-dropdown">
+                                <div class="cart-dropdown-header">
+                                    Shopping Cart
+                                </div>
+                                <div class="cart-items" id="cartItems">
+                                    <div class="cart-empty">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <p>Your cart is empty</p>
+                                    </div>
+                                </div>
+                                <div class="cart-dropdown-footer" id="cartFooter" style="display: none;">
+                                    <div class="cart-total">
+                                        <span>Total:</span>
+                                        <span class="cart-total-price" id="cartTotal">$0.00</span>
+                                    </div>
+                                    <div class="cart-actions">
+                                        <button class="btn-view-cart" onclick="window.location.href='cart.html'">View Cart</button>
+                                        <button class="btn-checkout" onclick="window.location.href='checkout.html'">Checkout</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Page -->
+    <section class="cart-page">
+        <div class="container">
+            <div class="cart-header">
+                <h1><i class="fas fa-shopping-cart"></i> Shopping Cart</h1>
+            </div>
+
+            <div id="cartContent">
+                <!-- Cart items will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3><i class="fas fa-cog"></i> GearSphere</h3>
+                    <p>Your trusted source for premium mobile accessories. Quality guaranteed, customer satisfaction first.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Get exclusive deals and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-amex"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GearSphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="cart-page.js"></script>
+</body>
+</html>

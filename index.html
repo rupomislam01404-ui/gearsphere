@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GearSphere - Premium mobile accessories for modern lifestyles. Fast shipping, quality guaranteed.">
+    <title>GearSphere - Premium Mobile Accessories</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-cog"></i>
+                    GearSphere
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li>
+                        <a href="#" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i> 
+                            <span class="cart-count">0</span>
+                            <div class="cart-dropdown">
+                                <div class="cart-dropdown-header">
+                                    Shopping Cart
+                                </div>
+                                <div class="cart-items" id="cartItems">
+                                    <div class="cart-empty">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <p>Your cart is empty</p>
+                                    </div>
+                                </div>
+                                <div class="cart-dropdown-footer" id="cartFooter" style="display: none;">
+                                    <div class="cart-total">
+                                        <span>Total:</span>
+                                        <span class="cart-total-price" id="cartTotal">$0.00</span>
+                                    </div>
+                                    <div class="cart-actions">
+                                        <button class="btn-view-cart" onclick="window.location.href='cart.html'">View Cart</button>
+                                        <button class="btn-checkout" onclick="window.location.href='checkout.html'">Checkout</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="badge">🔥 New Arrivals</span>
+                    <h1>Protect Your Tech,<br><span class="gradient-text">Elevate Your Style</span></h1>
+                    <p>Premium mobile accessories designed for the modern lifestyle. Unbeatable quality, lightning-fast delivery.</p>
+                    <div class="hero-cta">
+                        <a href="shop.html" class="btn btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
+                        <a href="#features" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <h3>50K+</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                        <div class="stat">
+                            <h3>4.9/5</h3>
+                            <p>Average Rating</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p>Customer Support</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-card">
+                        <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=800&q=80" alt="Premium Phone Case">
+                        <div class="price-tag">From $19.99</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="badges-grid">
+                <div class="badge-item">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h4>Free Shipping</h4>
+                    <p>On orders over $50</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Secure Payment</h4>
+                    <p>100% Protected</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-undo"></i>
+                    <h4>30-Day Returns</h4>
+                    <p>Money-back guarantee</p>
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-headset"></i>
+                    <h4>24/7 Support</h4>
+                    <p>Always here to help</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Bestselling Accessories</h2>
+                <p>Handpicked favorites trusted by thousands</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=500&q=80" alt="Premium Phone Case">
+                        <span class="product-badge">Bestseller</span>
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Premium Silicone Case</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(2.4k reviews)</span>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">$24.99</span>
+                            <span class="original-price">$39.99</span>
+                        </div>
+                        <a href="product.html" class="btn btn-add-cart">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500&q=80" alt="Wireless Charger">
+                        <span class="product-badge new">New</span>
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Fast Wireless Charger</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(1.8k reviews)</span>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">$34.99</span>
+                        </div>
+                        <a href="product.html" class="btn btn-add-cart">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80" alt="Screen Protector">
+                        <span class="product-badge">-40%</span>
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Tempered Glass Screen Protector</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(3.1k reviews)</span>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">$11.99</span>
+                            <span class="original-price">$19.99</span>
+                        </div>
+                        <a href="product.html" class="btn btn-add-cart">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=500&q=80" alt="Phone Holder">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Magnetic Car Phone Holder</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(1.5k reviews)</span>
+                        </div>
+                        <div class="price">
+                            <span class="current-price">$19.99</span>
+                        </div>
+                        <a href="product.html" class="btn btn-add-cart">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="section-footer">
+                <a href="shop.html" class="btn btn-outline">View All Products <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose GearSphere?</h2>
+                <p>Quality you can trust, service you'll love</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Every product is carefully selected and tested to meet our high standards</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Express shipping available. Get your order in 2-5 business days</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure Shopping</h3>
+                    <p>SSL encrypted checkout. Your data is always protected</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Warranty Included</h3>
+                    <p>All products come with manufacturer warranty and quality guarantee</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Best Prices</h3>
+                    <p>Competitive pricing with regular discounts and exclusive deals</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Happy Customers</h3>
+                    <p>Join 50,000+ satisfied customers who trust GearSphere</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Real reviews from real customers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The phone case I ordered exceeded my expectations! Perfect fit, amazing quality, and fast shipping. Will definitely order again!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="Sarah Johnson">
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"GearSphere has the best mobile accessories at unbeatable prices. Customer service is top-notch too. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=13" alt="Michael Chen">
+                        <div>
+                            <h4>Michael Chen</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"I've been buying from GearSphere for months now. Every product is exactly as described. Love the quality and fast delivery!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Emma Rodriguez">
+                        <div>
+                            <h4>Emma Rodriguez</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Upgrade Your Mobile Experience?</h2>
+                <p>Join thousands of happy customers. Shop premium accessories today!</p>
+                <a href="shop.html" class="btn btn-primary btn-lg">Start Shopping <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3><i class="fas fa-cog"></i> GearSphere</h3>
+                    <p>Your trusted source for premium mobile accessories. Quality guaranteed, customer satisfaction first.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Get exclusive deals and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-amex"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GearSphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

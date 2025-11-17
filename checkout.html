@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure checkout - GearSphere">
+    <title>Checkout - GearSphere</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .checkout-page {
+            padding: 8rem 0 4rem;
+            margin-top: 70px;
+            background: var(--light);
+        }
+        
+        .checkout-header {
+            background: var(--white);
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .checkout-steps {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .checkout-step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-light);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step-number.active {
+            background: var(--primary);
+        }
+        
+        .step-text {
+            font-weight: 600;
+            color: var(--gray);
+        }
+        
+        .step-text.active {
+            color: var(--primary);
+        }
+        
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+        }
+        
+        .checkout-form-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+        
+        .payment-methods {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .payment-option {
+            border: 2px solid var(--gray-light);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .payment-option:hover {
+            border-color: var(--primary);
+        }
+        
+        .payment-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .payment-option.selected {
+            border-color: var(--primary);
+            background: var(--light);
+        }
+        
+        .payment-label {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+        }
+        
+        .payment-icon {
+            font-size: 2rem;
+        }
+        
+        .card-icons {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 1.75rem;
+            color: var(--gray);
+        }
+        
+        .payment-details {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: var(--radius-md);
+        }
+        
+        .payment-details.show {
+            display: block;
+        }
+        
+        .delivery-options {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .delivery-option {
+            border: 2px solid var(--gray-light);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .delivery-option:hover,
+        .delivery-option.selected {
+            border-color: var(--primary);
+            background: var(--light);
+        }
+        
+        .delivery-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .delivery-info input[type="radio"] {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .delivery-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .place-order-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 2rem;
+        }
+        
+        .place-order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .order-summary-sidebar {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .summary-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .summary-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .summary-item-details {
+            flex: 1;
+        }
+        
+        .summary-item-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .summary-item-qty {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+        
+        .summary-item-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        @media (max-width: 1024px) {
+            .checkout-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-summary-sidebar {
+                position: static;
+                order: -1;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-cog"></i>
+                    GearSphere
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i> 
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Page -->
+    <section class="checkout-page">
+        <div class="checkout-header">
+            <div class="container">
+                <div class="checkout-steps">
+                    <div class="checkout-step">
+                        <div class="step-number active">1</div>
+                        <div class="step-text active">Information</div>
+                    </div>
+                    <div class="checkout-step">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Payment</div>
+                    </div>
+                    <div class="checkout-step">
+                        <div class="step-number">3</div>
+                        <div class="step-text">Confirmation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="checkout-layout">
+                <div class="checkout-form-section">
+                    <form id="checkoutForm">
+                        <!-- Customer Information -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-user"></i> Customer Information
+                            </h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shipping Address -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-map-marker-alt"></i> Shipping Address
+                            </h2>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label for="address">Street Address *</label>
+                                    <input type="text" id="address" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City *</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State/Province *</label>
+                                    <input type="text" id="state" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="zip">ZIP/Postal Code *</label>
+                                    <input type="text" id="zip" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="country">Country *</label>
+                                    <select id="country" required>
+                                        <option value="">Select Country</option>
+                                        <option value="US">United States</option>
+                                        <option value="BD">Bangladesh</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="CA">Canada</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delivery Method -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-truck"></i> Delivery Method
+                            </h2>
+                            <div class="delivery-options">
+                                <div class="delivery-option selected" onclick="selectDelivery(this, 'standard', 9.99)">
+                                    <div class="delivery-info">
+                                        <input type="radio" name="delivery" value="standard" checked>
+                                        <div>
+                                            <strong>Standard Delivery</strong><br>
+                                            <small>5-7 business days</small>
+                                        </div>
+                                    </div>
+                                    <div class="delivery-price">$9.99</div>
+                                </div>
+                                <div class="delivery-option" onclick="selectDelivery(this, 'express', 19.99)">
+                                    <div class="delivery-info">
+                                        <input type="radio" name="delivery" value="express">
+                                        <div>
+                                            <strong>Express Delivery</strong><br>
+                                            <small>2-3 business days</small>
+                                        </div>
+                                    </div>
+                                    <div class="delivery-price">$19.99</div>
+                                </div>
+                                <div class="delivery-option" onclick="selectDelivery(this, 'overnight', 29.99)">
+                                    <div class="delivery-info">
+                                        <input type="radio" name="delivery" value="overnight">
+                                        <div>
+                                            <strong>Overnight Delivery</strong><br>
+                                            <small>Next business day</small>
+                                        </div>
+                                    </div>
+                                    <div class="delivery-price">$29.99</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="form-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-credit-card"></i> Payment Method
+                            </h2>
+                            <div class="payment-methods">
+                                <!-- Credit/Debit Card -->
+                                <div class="payment-option selected" onclick="selectPayment(this, 'card')">
+                                    <input type="radio" name="payment" value="card" checked>
+                                    <div class="payment-label">
+                                        <div>
+                                            <strong>Credit/Debit Card</strong><br>
+                                            <small>Visa, Mastercard, Amex</small>
+                                        </div>
+                                    </div>
+                                    <div class="card-icons">
+                                        <i class="fab fa-cc-visa"></i>
+                                        <i class="fab fa-cc-mastercard"></i>
+                                        <i class="fab fa-cc-amex"></i>
+                                    </div>
+                                </div>
+                                <div class="payment-details show" id="cardDetails">
+                                    <div class="form-row full">
+                                        <div class="form-group">
+                                            <label for="cardNumber">Card Number *</label>
+                                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="cardExpiry">Expiry Date *</label>
+                                            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cardCVV">CVV *</label>
+                                            <input type="text" id="cardCVV" placeholder="123" maxlength="4">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- PayPal -->
+                                <div class="payment-option" onclick="selectPayment(this, 'paypal')">
+                                    <input type="radio" name="payment" value="paypal">
+                                    <div class="payment-label">
+                                        <i class="fab fa-paypal payment-icon" style="color: #003087;"></i>
+                                        <strong>PayPal</strong>
+                                    </div>
+                                </div>
+
+                                <!-- bKash -->
+                                <div class="payment-option" onclick="selectPayment(this, 'bkash')">
+                                    <input type="radio" name="payment" value="bkash">
+                                    <div class="payment-label">
+                                        <div>
+                                            <strong>bKash</strong><br>
+                                            <small>Bangladesh mobile payment</small>
+                                        </div>
+                                    </div>
+                                    <div style="color: #E2136E; font-weight: 700; font-size: 1.5rem;">bKash</div>
+                                </div>
+                                <div class="payment-details" id="bkashDetails">
+                                    <div class="form-group">
+                                        <label for="bkashNumber">bKash Number *</label>
+                                        <input type="tel" id="bkashNumber" placeholder="01XXXXXXXXX" maxlength="11">
+                                    </div>
+                                </div>
+
+                                <!-- Cash on Delivery -->
+                                <div class="payment-option" onclick="selectPayment(this, 'cod')">
+                                    <input type="radio" name="payment" value="cod">
+                                    <div class="payment-label">
+                                        <i class="fas fa-money-bill-wave payment-icon" style="color: var(--success);"></i>
+                                        <div>
+                                            <strong>Cash on Delivery</strong><br>
+                                            <small>Pay when you receive</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="place-order-btn">
+                            <i class="fas fa-lock"></i> Place Order Securely
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary-sidebar">
+                    <h2 class="section-title">Order Summary</h2>
+                    <div id="orderSummaryItems">
+                        <!-- Items will be injected here -->
+                    </div>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="summarySubtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="summaryShipping">$9.99</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (8%)</span>
+                        <span id="summaryTax">$0.00</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span class="price" id="summaryTotal">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3><i class="fas fa-cog"></i> GearSphere</h3>
+                    <p>Your trusted source for premium mobile accessories.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Secure Payment</h4>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-amex"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GearSphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>
